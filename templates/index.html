@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать в автосервис</h1>
+    </header>
+
+    <section>
+        <h2>Клиенты</h2>
+        <ul>
+            {% for client in clients %}
+                <li>{{ client.name }} - {{ client.email }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Машины</h2>
+        <ul>
+            {% for car in cars %}
+                <li>{{ car.model }} ({{ car.license_plate }})</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Заказы</h2>
+        <ul>
+            {% for order in orders %}
+                <li>{{ order.service_type }} - {{ order.status }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

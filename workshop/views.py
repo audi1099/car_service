@@ -1,6 +1,17 @@
 from rest_framework import viewsets
-from .models import Client, Car, RepairOrder
 from .serializers import ClientSerializer, CarSerializer, RepairOrderSerializer
+from django.shortcuts import render
+from .models import Client, Car, RepairOrder
+
+def home(request):
+    clients = Client.objects.all()
+    cars = Car.objects.all()
+    orders = RepairOrder.objects.all()
+    return render(request, 'index.html', {
+        'clients': clients,
+        'cars': cars,
+        'orders': orders,
+    })
 
 class ClientViewSet(viewsets.ModelViewSet):
     queryset = Client.objects.all()
